@@ -8,9 +8,8 @@ module FogBugz
 
     def initialize(config_file)
       @config = Psych.load(File.open(config_file,'r'))
-      @token = @config["token"]
-      @base_url = @config["base_url"]
-      print @base_url
+      @token = @config[:token]
+      @base_url = @config[:base_url]
     end
 
     def make_request(command, params={})
@@ -19,9 +18,9 @@ module FogBugz
       request = {:token => @token}
       request.merge!({:cmd => command})
       request.merge! params
-      request = :body => request
-      #Nokogiri::XML(self.class.post(@base_url, request).body)
-      puts self.class.post(@base_url, request)
+      request = {:body => request}
+      doc = Nokogiri::XML(self.class.post(@base_url, request).body)
+      puts doc
     end
   end
 

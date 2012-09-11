@@ -24,8 +24,8 @@ token = doc.at_xpath('//token').content
 
 base = {:base_url => base}
 token = {:token => token}
+yaml = base.merge! token
 File.open('config.yaml', 'w') { |f|
   f.write base.to_yaml
-  f.write token.to_yaml
 }
 
