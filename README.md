@@ -20,7 +20,7 @@ bundle install
 
 Setup
 --------------------------
-``bash
+```bash
 ruby ./bin/write_config.rb <fogbugz_url> <email> <password>
 ```
 
