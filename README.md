@@ -13,10 +13,14 @@ sudo bundle install
 ```
 
 RVM:
-> gem install bundler
+```bash
+gem install bundler
 bundle install
+```
 
 Setup
 --------------------------
-> ruby ./bin/write_config.rb <fogbugz_url> <email> <password>
+``bash
+ruby ./bin/write_config.rb <fogbugz_url> <email> <password>
+```
 
