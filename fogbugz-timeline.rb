@@ -20,8 +20,15 @@ end
 
 opts.parse!
 
-cmd = ARGV[0].to_s
+cmd = ARGV[0].to_sym
 case_num = ARGV[1]
 
 fog = FogBugz::API.new File.absolute_path('config.yaml')
-fog.eval_call(cmd,case_num)
+
+if cmd == :start
+  puts fog.start_work(case_num)
+elsif cmd == :stop
+  puts fog.stop_work
+else
+  puts fog.api_call(cmd, case_num, ARGV[2..ARGV.size-1])
+end
