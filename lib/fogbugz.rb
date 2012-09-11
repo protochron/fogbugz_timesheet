@@ -39,6 +39,10 @@ module FogBugz
 
     def stop_work
       make_request(:stopWork)
+      if !result.xpath('//error').empty?
+        raise APIError, result.content
+      end
+      return APISuccess
     end
 
     def list_intervals
